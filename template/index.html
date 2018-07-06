@@ -92,6 +92,9 @@
     {{#if description}}
       <p>{{{nl2br description}}}</p>
     {{/if}}
+    {{#if speed}}
+      <p>{{{nl2br speed}}}</p>
+    {{/if}}
     {{#each articles}}
       <div id="api-{{group}}-{{name}}">
         {{{article}}}
@@ -146,6 +149,10 @@
           {{/if}}
         {{/each}}
       </p>
+    {{/if}}
+
+    {{#if article.speed}}
+      <p>速度：{{{nl2br article.speed}}}</p>
     {{/if}}
 
     {{#if_gt article.examples.length compare=0}}
@@ -330,6 +337,14 @@
     {{else}}
       {{#if compare.description}}
       <p>{{{showDiff "" compare.description "nl2br"}}}</p>
+      {{/if}}
+    {{/if}}
+
+    {{#if article.speed}}
+      <p>{{{showDiff article.speed compare.speed "nl2br"}}}</p>
+    {{else}}
+      {{#if compare.speed}}
+      <p>{{{showDiff "" compare.speed "nl2br"}}}</p>
       {{/if}}
     {{/if}}
 
